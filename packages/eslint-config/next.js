@@ -7,8 +7,7 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "prettier",
-    require.resolve("@vercel/style-guide/eslint/next"),
-    "eslint-config-turbo",
+    "plugin:prettier/recommended"
   ],
   globals: {
     React: true,
@@ -32,4 +31,12 @@ module.exports = {
     "node_modules/",
   ],
   overrides: [{ files: ["*.js?(x)", "*.ts?(x)"] }],
+  rules: {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+      }
+    ]
+  }
 };
