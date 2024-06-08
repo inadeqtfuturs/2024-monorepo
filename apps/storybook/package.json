@@ -1,0 +1,26 @@
+{
+	"name": "docs",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"lint": "biome check --write .",
+		"storybook": "sb dev -p 6006",
+		"build-storybook": "sb build"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.0",
+		"@chromatic-com/storybook": "^1.5.0",
+		"@if/tooling": "*",
+		"@storybook/addon-essentials": "^8.1.6",
+		"@storybook/addon-interactions": "^8.1.6",
+		"@storybook/addon-links": "^8.1.6",
+		"@storybook/addon-onboarding": "^8.1.6",
+		"@storybook/blocks": "^8.1.6",
+		"@storybook/cli": "^8.1.6",
+		"@storybook/nextjs": "^8.1.6",
+		"@storybook/react": "^8.1.6",
+		"@storybook/test": "^8.1.6",
+		"@types/node": "^20.11.24",
+		"typescript": "^5.3.3"
+	}
+}
