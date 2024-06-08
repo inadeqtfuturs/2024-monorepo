@@ -8,14 +8,15 @@
 		"./code": "./src/code.tsx"
 	},
 	"scripts": {
-		"lint": "eslint . --max-warnings 0",
+		"lint": "biome check --write .",
 		"generate:component": "turbo gen react-component"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "^1.8.0",
 		"@if/tooling": "*",
 		"@turbo/gen": "^1.12.4",
-		"@types/node": "^20.11.24",
 		"@types/eslint": "^8.56.5",
+		"@types/node": "^20.11.24",
 		"@types/react": "^18.2.61",
 		"@types/react-dom": "^18.2.19",
 		"react": "^18.2.0",

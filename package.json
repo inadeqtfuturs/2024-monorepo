@@ -8,7 +8,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.8.0",
-    "@if/tooling": "*",
+		"@if/tooling": "*",
 		"turbo": "latest"
 	},
 	"engines": {
