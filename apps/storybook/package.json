@@ -1,11 +1,11 @@
 {
-	"name": "docs",
+	"name": "storybook",
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"lint": "biome check --write .",
-		"storybook": "sb dev -p 6006",
-		"build-storybook": "sb build"
+		"dev": "export $(grep -e '^STORYBOOK_PORT' -- ../../.env) && sb dev -p ${STORYBOOK_PORT} --no-open",
+		"build-storybook": "sb build",
+		"lint": "biome check --write ."
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.8.0",

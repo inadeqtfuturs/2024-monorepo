@@ -13,7 +13,7 @@ monorepo for site and prototypes
 
 ## todo
 
-- [ ] rename repo to `if`
 - [ ] hygen or similar for scaffolding
+    - use turbo
 - [ ] storybook
 - [ ] test runner (storybook and node)
