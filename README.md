@@ -8,12 +8,13 @@ monorepo for site and prototypes
 
 ## packages
 
-- eslint-config: shared eslint config
-- typescript-config: shared typescript config
+- tooling: shared tooling
+    - biome: biome config
+    - tsconfig: discrete tsconfig files
+- ui: shared ui components
 
 ## todo
 
 - [ ] hygen or similar for scaffolding
     - use turbo
-- [ ] storybook
 - [ ] test runner (storybook and node)
