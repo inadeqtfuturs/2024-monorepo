@@ -5,6 +5,7 @@ monorepo for site and prototypes
 ## apps
 
 - web: inadequatefutures.com / alexchristie.dev
+- docs: storybook
 
 ## packages
 
@@ -17,4 +18,3 @@ monorepo for site and prototypes
 
 - [ ] hygen or similar for scaffolding
     - use turbo
-- [ ] test runner (storybook and node)
