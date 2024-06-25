@@ -1,0 +1,4 @@
+.button {
+  all: unset;
+  background: var(--color-primary);
+}

@@ -1,5 +1,7 @@
 import React from 'react';
 import type { ReactNode } from 'react';
+import classname from '../utils/classname';
+import styles from './Button.module.css';
 
 interface ButtonProps {
 	children: ReactNode;
@@ -10,7 +12,7 @@ function Button({ children, className }: ButtonProps) {
 	return (
 		<button
 			type='button'
-			className={className}
+			className={classname([className, styles.button])}
 			onClick={() => alert('Hello world')}
 		>
 			{children}

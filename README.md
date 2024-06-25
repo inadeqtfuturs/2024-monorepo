@@ -12,6 +12,7 @@ monorepo for site and prototypes
 - tooling: shared tooling
     - biome: biome config
     - tsconfig: discrete tsconfig files
+    - vite.config.ts: vite config for test running
 - ui: shared ui components
 
 ## todo
