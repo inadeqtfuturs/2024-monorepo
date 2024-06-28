@@ -1,4 +1,8 @@
 .button {
-  all: unset;
-  background: var(--color-primary);
+	@custom-media --test (min-width: 400px);
+	all: unset;
+	@media (--test) {
+		display: none;
+		background-color: aquamarine;
+	}
 }

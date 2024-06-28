@@ -3,8 +3,9 @@
 	"version": "0.0.0",
 	"private": true,
 	"exports": {
-		"./button": "./src/button.tsx",
-		"./theme/tokens": "./src/theme/tokens.css"
+		"./button": "./src/Button/index.tsx",
+		"./theme/tokens": "./src/theme/tokens.css",
+		"./styles.css": "./src/theme/styles.css"
 	},
 	"scripts": {
 		"lint": "biome check --write .",
