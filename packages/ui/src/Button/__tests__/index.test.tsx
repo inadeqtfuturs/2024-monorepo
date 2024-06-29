@@ -7,7 +7,7 @@ import * as stories from '../Button.stories';
 const { Defaults } = composeStories(stories);
 
 describe('Button', () => {
-	it('Component mounts', () => {
-		render(<Defaults />);
-	});
+  it('Component mounts', () => {
+    render(<Defaults />);
+  });
 });

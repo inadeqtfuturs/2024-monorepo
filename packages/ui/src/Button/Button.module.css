@@ -1,5 +1,5 @@
 .button {
-	@custom-media --test (min-width: 400px);
+	@custom-media --test (min-width: 0px);
 	all: unset;
 	@media (--test) {
 		display: none;

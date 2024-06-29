@@ -3,8 +3,9 @@
 	"private": true,
 	"scripts": {
 		"build": "turbo build",
-		"dev": "turbo dev",
+		"dev": "turbo run dev",
 		"dev:web": "turbo dev --filter=web",
+		"dev:storybook": "turbo dev --filter=storybook",
 		"lint": "turbo lint",
 		"test": "turbo test",
 		"test:watch": "turbo test:watch",

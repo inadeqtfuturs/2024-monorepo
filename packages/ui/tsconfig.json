@@ -1,9 +1,9 @@
 {
-	"extends": "@if/tooling/tsconfig/react-library.json",
-	"compilerOptions": {
-		"outDir": "dist",
-		"plugins": [{ "name": "typescript-plugin-css-modules" }]
-	},
-	"include": ["src"],
-	"exclude": ["node_modules", "dist"]
+  "extends": "@if/tooling/tsconfig/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
