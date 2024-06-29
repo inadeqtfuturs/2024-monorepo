@@ -1,15 +1,15 @@
 import type { Preview } from '@storybook/react';
-/* import '@if/ui/styles.css'; */
+import '@if/ui/styles.css';
 
 const preview: Preview = {
-	parameters: {
-		controls: {
-			matchers: {
-				color: /(background|color)$/i,
-				date: /Date$/i,
-			},
-		},
-	},
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+  },
 };
 
 export default preview;

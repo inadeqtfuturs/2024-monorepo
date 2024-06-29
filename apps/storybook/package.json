@@ -1,30 +1,32 @@
 {
-	"name": "storybook",
-	"version": "1.0.0",
-	"private": true,
-	"scripts": {
-		"dev": "export $(grep -e '^STORYBOOK_PORT' -- ../../.env) && sb dev -p ${STORYBOOK_PORT} --no-open",
-		"build-storybook": "sb build",
-		"lint": "biome check --write ."
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.8.0",
-		"@chromatic-com/storybook": "^1.5.0",
-		"@if/tooling": "*",
-		"@storybook/addon-essentials": "^8.1.6",
-		"@storybook/addon-interactions": "^8.1.6",
-		"@storybook/addon-links": "^8.1.6",
-		"@storybook/addon-styling-webpack": "^1.0.0",
-		"@storybook/blocks": "^8.1.6",
-		"@storybook/cli": "^8.1.6",
-		"@storybook/nextjs": "^8.1.6",
-		"@storybook/react": "^8.1.6",
-		"@storybook/test": "^8.1.6",
-		"@types/node": "^20.11.24",
-		"postcss": "^8.4.38",
-		"postcss-flexbugs-fixes": "^5.0.2",
-		"postcss-loader": "^8.1.1",
-		"postcss-preset-env": "^9.5.14",
-		"typescript": "^5.3.3"
-	}
+  "name": "storybook",
+  "version": "1.0.0",
+  "private": true,
+  "sideEffects": ["*.css"],
+  "scripts": {
+    "dev": "export $(grep -e '^STORYBOOK_PORT' -- ../../.env) && sb dev -p ${STORYBOOK_PORT} --no-open",
+    "build-storybook": "sb build",
+    "lint": "biome check --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.0",
+    "@chromatic-com/storybook": "^1.5.0",
+    "@if/tooling": "*",
+    "@storybook/addon-essentials": "^8.1.6",
+    "@storybook/addon-interactions": "^8.1.6",
+    "@storybook/addon-links": "^8.1.6",
+    "@storybook/addon-styling-webpack": "^1.0.0",
+    "@storybook/blocks": "^8.1.6",
+    "@storybook/cli": "^8.1.6",
+    "@storybook/nextjs": "^8.1.6",
+    "@storybook/react": "^8.1.6",
+    "@storybook/test": "^8.1.6",
+    "@types/node": "^20.11.24",
+    "postcss": "^8.4.38",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^9.5.14",
+    "typescript": "^5.3.3"
+  }
 }
+
