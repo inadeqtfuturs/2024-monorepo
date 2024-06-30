@@ -6,15 +6,16 @@ import styles from './Button.module.css';
 
 interface ButtonProps {
   children: ReactNode;
+  onClick?: () => void;
   className?: string;
 }
 
-function Button({ children, className }: ButtonProps) {
+function Button({ children, className, onClick = () => {} }: ButtonProps) {
   return (
     <button
       type='button'
       className={classname([className, styles.button])}
-      onClick={() => alert('Hello world')}
+      onClick={onClick}
     >
       {children}
     </button>

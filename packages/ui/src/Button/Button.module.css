@@ -1,8 +1,3 @@
 .button {
-  @custom-media --test (min-width: 300px);
   all: unset;
-  @media (--test) {
-    display: none;
-    background-color: aquamarine;
-  }
 }
