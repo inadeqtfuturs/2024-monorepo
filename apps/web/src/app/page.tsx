@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@if/ui/button';
+import Button from '@if/ui/components/button';
 
 function Home() {
   return (
