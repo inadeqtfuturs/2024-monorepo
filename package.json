@@ -1,24 +1,25 @@
 {
-	"name": "if",
-	"private": true,
-	"scripts": {
-		"build": "turbo build",
-		"dev": "turbo run dev",
-		"dev:web": "turbo dev --filter=web",
-		"dev:storybook": "turbo dev --filter=storybook",
-		"lint": "turbo lint",
-		"test": "turbo test",
-		"test:watch": "turbo test:watch",
-		"test:coverage": "turbo test:coverage"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.8.0",
-		"@if/tooling": "*",
-		"turbo": "^2.0.3"
-	},
-	"engines": {
-		"node": ">=18"
-	},
-	"packageManager": "npm@10.5.0",
-	"workspaces": ["apps/*", "packages/*"]
+  "name": "if",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo run dev",
+    "dev:web": "turbo dev --filter=web",
+    "dev:storybook": "turbo dev --filter=storybook",
+    "lint": "turbo lint",
+    "types": "turbo types",
+    "test": "turbo test",
+    "test:watch": "turbo test:watch",
+    "test:coverage": "turbo test:coverage"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.0",
+    "@if/tooling": "*",
+    "turbo": "^2.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "npm@10.5.0",
+  "workspaces": ["apps/*", "packages/*"]
 }

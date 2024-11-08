@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import type { ReactNode } from 'react';
-import classname from '../utils/classname';
+import classname from '../../utils/classname';
 import styles from './Button.module.css';
 
 interface ButtonProps {

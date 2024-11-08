@@ -1,29 +1,32 @@
 {
-	"$schema": "https://turbo.build/schema.json",
-	"globalDependencies": ["**/.env.*local"],
-	"tasks": {
-		"build": {
-			"dependsOn": ["^build"],
-			"outputs": [".next/**", "!.next/cache/**"]
-		},
-		"lint": {
-			"dependsOn": ["^lint"]
-		},
-		"test": {
-			"dependsOn": ["^test"]
-		},
-		"test:watch": {
-			"dependsOn": ["^test:watch"]
-		},
-		"test:coverage": {
-			"outputs": ["coverage/**"],
-			"dependsOn": ["^test:coverage"]
-		},
-		"dev": {
-			"cache": false,
-			"interactive": true,
-			"persistent": true
-		}
-	},
-	"ui": "tui"
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "types": {
+      "dependsOn": ["^types"]
+    },
+    "test": {
+      "dependsOn": ["^test"]
+    },
+    "test:watch": {
+      "dependsOn": ["^test:watch"]
+    },
+    "test:coverage": {
+      "outputs": ["coverage/**"],
+      "dependsOn": ["^test:coverage"]
+    },
+    "dev": {
+      "cache": false,
+      "interactive": true,
+      "persistent": true
+    }
+  },
+  "ui": "tui"
 }

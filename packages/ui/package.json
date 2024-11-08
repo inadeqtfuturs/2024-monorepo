@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./button": "./src/Button/index.tsx",
+    "./components/button": "./src/components/Button/index.tsx",
     "./theme/tokens": "./src/theme/tokens.css",
     "./styles.css": "./src/theme/styles.css"
   },

@@ -1,0 +1,22 @@
+{
+  "name": "@if/mdx-relations",
+  "version": "0.0.0",
+  "private": true,
+  "liscence": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint": "biome check --write .",
+    "types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.0",
+    "@if/tooling": "*",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^3.0.1",
+    "fast-glob": "^3.3.2",
+    "glob": "^10.4.2",
+    "gray-matter": "^4.0.3"
+  }
+}

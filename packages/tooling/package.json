@@ -1,19 +1,19 @@
 {
-	"name": "@if/tooling",
-	"version": "0.0.0",
-	"private": true,
-	"license": "MIT",
-	"type": "module",
-	"scripts": {
-		"test": "vitest run",
-		"test:watch": "vitest watch",
-		"test:coverage": "vitest run --coverage"
-	},
-	"devDependencies": {
-		"@vitest/coverage-v8": "^1.6.0",
-		"jsdom": "^24.1.0",
-		"vite": "^5.2.13",
-		"vite-tsconfig-paths": "^4.3.2",
-		"vitest": "^1.6.0"
-	}
+  "name": "@if/tooling",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^1.6.0",
+    "jsdom": "^24.1.0",
+    "vite": "^5.2.13",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^1.6.0"
+  }
 }
