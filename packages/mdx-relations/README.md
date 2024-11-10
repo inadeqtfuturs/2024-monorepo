@@ -1,5 +1,11 @@
 # mdx-relations
 
+## todo
+
+- [ ] config and typing to skip generators
+- [ ] memoization
+- [ ] get single page
+
 i have markdown. i want to generate relations between them.
 
 `mdx-relations` is a light set of utilities for compiling markdown and generating relational data between markdown files. `mdx-relations` abstracts a lot of the boilerplate you might otherwise need to write to power a `md|x` backed site and provides granular control over how your files are processed.

@@ -98,9 +98,9 @@ describe('Content Utils', () => {
       };
 
       const utils = createUtils(config);
-      const pages = await utils.getPages(
-        (page) => !page.params.slug.includes('nested'),
-      );
+      const pages = await utils.getPages({
+        filter: (page) => !page.params.slug.includes('nested'),
+      });
 
       expect(pages).toHaveLength(2);
       expect(pages.every((p) => !p.params.slug.includes('nested'))).toBe(true);
@@ -198,9 +198,9 @@ describe('Content Utils', () => {
       };
 
       const { getPages } = createUtils<{ tags: string[] }>(config);
-      const pages = await getPages(({ frontmatter: { tags = [] } }) =>
-        tags.includes('one'),
-      );
+      const pages = await getPages({
+        filter: ({ frontmatter: { tags = [] } }) => tags.includes('one'),
+      });
 
       expect(pages.length).toEqual(2);
     });

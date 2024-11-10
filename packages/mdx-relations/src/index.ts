@@ -159,7 +159,8 @@ function createUtils<
 >(config: Config & { metadataGenerators?: M; relationGenerators?: R }) {
   return {
     getPaths: async (contentPath?: string) => getPaths(config, contentPath),
-    getPages: (filter?: Filter<M, R, F>) => getPages<M, R, F>(config, filter),
+    getPages: ({ filter }: { filter?: Filter<M, R, F> } = {}) =>
+      getPages<M, R, F>(config, filter),
   };
 }
 
