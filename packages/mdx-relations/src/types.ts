@@ -5,8 +5,8 @@ export type RelationGenerator<T = unknown> = (
   allPages: PageWithMetadata[],
 ) => T;
 
-export type MetadataGenerators = Record<string, MetadataGenerator> | undefined;
-export type RelationGenerators = Record<string, RelationGenerator> | undefined;
+export type MetadataGenerators = Record<string, MetadataGenerator>;
+export type RelationGenerators = Record<string, RelationGenerator>;
 
 export type Config = {
   contentDirectory: string;

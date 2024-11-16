@@ -1,7 +1,7 @@
 import React from 'react';
 import * as runtime from 'react/jsx-runtime';
 import { getBlogPages } from '../../../../content.config';
-import { evaluate, Jsx } from '@mdx-js/mdx';
+import { evaluate } from '@mdx-js/mdx';
 import rehypePrettyCode from 'rehype-pretty-code';
 
 export const dynamicParams = false;
@@ -21,9 +21,6 @@ async function GardenPage({ params: { slug } }: { params: { slug: string } }) {
     ...runtime,
     rehypePlugins: [rehypePrettyCode],
   });
-
-  console.log('@--> metadata', metadata);
-  console.log('@--> frontmatter', frontmatter);
 
   return (
     <div>

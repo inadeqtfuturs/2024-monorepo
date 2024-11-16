@@ -14,17 +14,21 @@ const { getPages: getBlogPages } = createUtils({
     date: ({ frontmatter: { date } }) => {
       return dateFormatter.format(new Date(date as string));
     },
-    mentions: ({ content }) => markdownLinkExtractor(content),
+    mentions: ({ content }) => markdownLinkExtractor(content) as string[],
   },
   relationGenerators: {
-    mentionedIn: (page, i, pages) => {
+    mentionedIn: (page, _i, pages) => {
       const pageMentionedIn = pages.filter(({ metadata: { mentions } }) => {
         return mentions.includes(`/garden/${page.params.slug}`);
       });
-
       return pageMentionedIn;
     },
   },
 });
 
-export { getBlogPages };
+const { getPages } = createUtils({ contentDirectory: '../../content/pages' });
+const { getPages: getWork } = createUtils({
+  contentDirectory: '../../content/work',
+});
+
+export { getBlogPages, getPages, getWork };
