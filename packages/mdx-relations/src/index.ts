@@ -152,6 +152,23 @@ const getPages = async <
   }
 };
 
+const getPage = async (
+  config: Config,
+  slug: string
+): Promise<BasePage | undefined> => {
+  try {
+    const files = await getFiles(config)
+    const pages = await Promise.all(
+      files.map(file => generatePage(file))
+    )
+
+    return pages.find(({ params: { slug: pageSlug } }) => pageSlug.join('/') === slug)
+  } catch (error) {
+    console.error(`Error getting ${slug}:`, error);
+    throw error;
+  }
+}
+
 function createUtils<
   F extends BaseFrontmatter = BaseFrontmatter,
   M extends MetadataGenerators = MetadataGenerators,
@@ -159,6 +176,8 @@ function createUtils<
 >(config: Config & { metadataGenerators?: M; relationGenerators?: R }) {
   return {
     getPaths: async (contentPath?: string) => getPaths(config, contentPath),
+    getPage: ({ slug }: { slug: string }) =>
+      getPage(config, slug),
     getPages: ({ filter }: { filter?: Filter<M, R, F> } = {}) =>
       getPages<M, R, F>(config, filter),
   };

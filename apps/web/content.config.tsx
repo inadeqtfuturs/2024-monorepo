@@ -26,9 +26,11 @@ const { getPages: getBlogPages } = createUtils({
   },
 });
 
-const { getPages } = createUtils({ contentDirectory: '../../content/pages' });
+const { getPages, getPage } = createUtils({
+  contentDirectory: '../../content/pages',
+});
 const { getPages: getWork } = createUtils({
   contentDirectory: '../../content/work',
 });
 
-export { getBlogPages, getPages, getWork };
+export { getBlogPages, getPage, getPages, getWork };

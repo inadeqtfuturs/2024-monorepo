@@ -1,0 +1,35 @@
+.sharedLayout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) 0;
+
+  nav {
+    ul {
+      list-style: none;
+      display: flex;
+      gap: var(--space-2);
+    }
+  }
+}
+
+.headerLink {
+  text-decoration: none;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radii-md);
+  color: var(--text);
+  transition: background 0.3s;
+
+  &:last-child {
+    margin: 0;
+  }
+
+  &:hover,
+  &:focus {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.spacer {
+  margin-left: var(--space-2);
+}
