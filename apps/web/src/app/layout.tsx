@@ -4,7 +4,9 @@ import React from 'react';
 import type { ReactNode } from 'react';
 
 import Layout from '@/components/Layout';
+import '@if/ui/styles.css';
 import '@/theme/global.css';
+import ThemeScript from '@/lib/getTheme';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,7 +21,10 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <body className={inter.className}>
         <Layout>{children}</Layout>
       </body>

@@ -123,5 +123,15 @@
     --radii-lg: 16px;
     --radii-xl: 9999px;
     --radii-2xl: 100%;
+
+    /* semantic tokens */
+    --background: var(--colors-gray-10);
+    --text: var(--colors-gray-1);
+  }
+
+  :root[data-theme="dark"] {
+    /* semantic tokens */
+    --background: var(--colors-gray-1);
+    --text: var(--colors-gray-10);
   }
 }

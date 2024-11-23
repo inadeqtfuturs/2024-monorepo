@@ -2,12 +2,17 @@ import Link from 'next/link';
 import React, { type PropsWithChildren } from 'react';
 
 import styles from './index.module.css';
+import dynamic from 'next/dynamic';
+
+const ToggleTheme = dynamic(() => import('./ToggleTheme'), {
+  ssr: false,
+});
 
 const menuConfig = [
   { label: 'writing', href: '/garden' },
-  { label: 'work', href: '/work' },
-  { label: 'about', href: '/about' },
+  { label: 'projects', href: '/projects' },
   { label: 'changelog', href: '/changelog' },
+  { label: 'about', href: '/about' },
 ];
 
 const footerMenu = [
@@ -49,6 +54,7 @@ function Layout({ children }: PropsWithChildren) {
             ))}
           </ul>
         </nav>
+        <ToggleTheme />
       </footer>
     </>
   );

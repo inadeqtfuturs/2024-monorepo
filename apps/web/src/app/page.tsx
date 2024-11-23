@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@if/ui/components/button';
 import { getBlogPages, getPage } from '../../content.config';
 import getGithubRepoInfo from '@/lib/getGithubRepoInfo';
 
@@ -13,7 +12,6 @@ async function Home() {
     'next-mdx-relations',
     'if-sf',
   ]);
-  console.log('@--> first', first);
   return (
     <div>
       <h1>hello world -- root page</h1>

@@ -20,7 +20,6 @@ async function getGithubRepoInfo(
     },
   )
     .then((resp) => {
-      console.log('@--> resp', resp);
       return resp.json();
     })
     .then((resp) => {
@@ -31,7 +30,6 @@ async function getGithubRepoInfo(
       return resp.filter((r: Repo) => selectRepositories.includes(r.name));
     })
     .catch((error) => {
-      console.log('@--> error', error);
       throw new Error(error);
     });
 

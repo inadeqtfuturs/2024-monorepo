@@ -1,10 +1,6 @@
-@import url("./reset.css");
-@import url("./tokens.css");
-
-@layer reset, tokens;
-
 html,
 body {
+  background: var(--background);
   max-width: 100vw;
   overflow-x: hidden;
 }

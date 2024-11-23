@@ -1,0 +1,6 @@
+a,
+p,
+li,
+span {
+  font-size: var(--font-size-sm);
+}

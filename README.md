@@ -13,7 +13,8 @@ monorepo for site and prototypes
     - biome: biome config
     - tsconfig: discrete tsconfig files
     - vite.config.ts: vite config for test running
-- ui: shared ui components
+- ui: shared ui components and theme
+- mdx-relations: mdx processing (wip)
 
 ## todo
 
