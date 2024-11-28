@@ -24,9 +24,8 @@ function Layout({ children }: PropsWithChildren) {
   return (
     <>
       <header className={styles.sharedLayout}>
-        <Link href='/' aria-label='home'>
+        <Link href='/' aria-label='home' className={styles.branding}>
           home
-          <div className='brand-logo' />
         </Link>
         <nav>
           <ul>

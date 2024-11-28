@@ -8,8 +8,32 @@
     ul {
       list-style: none;
       display: flex;
-      gap: var(--space-2);
+      gap: 0;
+      @media(min-width: 768px) {
+        gap: var(--space-2);
+      }
     }
+  }
+}
+
+.branding {
+  width: 24px;
+  height: 24px;
+  @media(min-width: 768px) {
+    width: 48px;
+    height: 48px;
+  }
+  margin: 0px;
+  border-radius: 100px;
+  border: 1px solid var(--text);
+  color: transparent;
+  font-size: 0;
+  background: transparent;
+  transition: 0.3s background;
+
+  &:hover,
+  &:focus {
+    background: color-mix(in srgb, var(--text), transparent 93%);
   }
 }
 
@@ -20,13 +44,9 @@
   color: var(--text);
   transition: background 0.3s;
 
-  &:last-child {
-    margin: 0;
-  }
-
   &:hover,
   &:focus {
-    background: rgba(0, 0, 0, 0.05);
+    background: color-mix(in srgb, var(--text), transparent 93%);
   }
 }
 

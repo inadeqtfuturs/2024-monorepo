@@ -7,8 +7,15 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
   day: 'numeric',
 });
 
+type FrontMatter = {
+  title: string;
+  date: string;
+  tags: string[];
+  excerpt: string;
+};
+
 // blog
-const { getPages: getBlogPages } = createUtils({
+const { getPages: getBlogPages } = createUtils<FrontMatter>({
   contentDirectory: '../../content/garden/',
   metadataGenerators: {
     date: ({ frontmatter: { date } }) => {
@@ -32,5 +39,7 @@ const { getPages, getPage } = createUtils({
 const { getPages: getWork } = createUtils({
   contentDirectory: '../../content/work',
 });
+
+export type Page = Awaited<ReturnType<typeof getBlogPages>>[number];
 
 export { getBlogPages, getPage, getPages, getWork };

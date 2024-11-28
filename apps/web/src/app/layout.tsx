@@ -4,9 +4,9 @@ import React from 'react';
 import type { ReactNode } from 'react';
 
 import Layout from '@/components/Layout';
+import ThemeScript from '@/lib/getTheme';
 import '@if/ui/styles.css';
 import '@/theme/global.css';
-import ThemeScript from '@/lib/getTheme';
 
 const inter = Inter({ subsets: ['latin'] });
 

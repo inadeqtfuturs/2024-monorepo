@@ -126,12 +126,14 @@
 
     /* semantic tokens */
     --background: var(--colors-gray-10);
-    --text: var(--colors-gray-1);
+    --text: var(--colors-gray-blue-1);
+    --link-hover: var(--colors-gray-blue-2);
   }
 
   :root[data-theme="dark"] {
     /* semantic tokens */
-    --background: var(--colors-gray-1);
+    --background: var(--colors-gray-blue-1);
     --text: var(--colors-gray-10);
+    --link-hover: var(--colors-gray-9);
   }
 }

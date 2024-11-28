@@ -1,7 +1,6 @@
-@import url('./reset.css');
-@import url('./base.css');
-@import url('./tokens.css');
-@import url('./typography.css');
-/* main css entry */
+@import url("./reset.css");
+@import url("./base.css");
+@import url("./tokens.css");
+@import url("./typography.css");
 
 @layer reset, base, tokens, typography;
