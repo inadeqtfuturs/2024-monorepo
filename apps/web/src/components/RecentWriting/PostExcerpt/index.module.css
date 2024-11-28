@@ -1,0 +1,20 @@
+.postExcerptWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
+  font-size: var(--font-size-2xs);
+}
+
+.tagWrapper {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.tag {
+  font-size: var(--font-size-xs);
+  padding: 0 var(--space-1);
+  border-radius: var(--radii-sm);
+  background: color-mix(in srgb, var(--text), transparent 95%);
+}

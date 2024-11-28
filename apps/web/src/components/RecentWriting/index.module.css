@@ -23,12 +23,3 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-.itemWrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.date {
-  font-size: var(--font-size-2xs);
-}

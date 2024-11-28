@@ -11,6 +11,7 @@ type FrontMatter = {
   title: string;
   date: string;
   tags: string[];
+  draft: boolean;
   excerpt: string;
 };
 
