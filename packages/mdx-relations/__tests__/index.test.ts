@@ -2,11 +2,6 @@ import { vi, describe, it, expect, beforeEach } from 'vitest';
 import fs from 'node:fs/promises';
 import glob from 'fast-glob';
 import createUtils from '../src/index';
-import type {
-  MetadataGenerator,
-  RelationGenerator,
-  Config,
-} from '../src/types';
 
 vi.mock('node:fs/promises');
 vi.mock('fast-glob');
@@ -42,7 +37,7 @@ describe('Content Utils', () => {
 
   describe('getPages', () => {
     it('should get all pages without any generators', async () => {
-      const config: Config = {
+      const config = {
         contentDirectory: '/content',
       };
 
@@ -56,13 +51,10 @@ describe('Content Utils', () => {
     });
 
     it('should apply metadata generators', async () => {
-      const titleGenerator: MetadataGenerator = (page) =>
-        page.frontmatter?.title as string;
-
-      const config: Config = {
+      const config = {
         contentDirectory: '/content',
         metadataGenerators: {
-          title: titleGenerator,
+          title: ({ frontmatter }) => frontmatter?.title as string,
         },
       };
 
@@ -73,18 +65,19 @@ describe('Content Utils', () => {
     });
 
     it('should apply relation generators', async () => {
-      const nextPostGenerator: RelationGenerator = (_, index, allPages) => ({
+      const nextPostGenerator = (_, index, allPages) => ({
         next: allPages[(index + 1) % allPages.length].params.slug,
       });
 
-      const config: Config = {
+      const utils = createUtils<{ test: string }>({
         contentDirectory: '/content',
+        metadataGenerators: {
+          title: () => 'title',
+        },
         relationGenerators: {
           navigation: nextPostGenerator,
         },
-      };
-
-      const utils = createUtils(config);
+      });
       const pages = await utils.getPages();
 
       expect(pages[0].metadata.navigation).toEqual({
@@ -93,7 +86,7 @@ describe('Content Utils', () => {
     });
 
     it('should apply filters correctly', async () => {
-      const config: Config = {
+      const config = {
         contentDirectory: '/content',
       };
 
@@ -109,7 +102,7 @@ describe('Content Utils', () => {
 
   describe('getPaths', () => {
     it('should return all page paths', async () => {
-      const config: Config = {
+      const config = {
         contentDirectory: '/content',
       };
 
@@ -124,7 +117,7 @@ describe('Content Utils', () => {
     });
 
     it('should handle custom content paths', async () => {
-      const config: Config = {
+      const config = {
         contentDirectory: '/content',
       };
 
@@ -144,7 +137,7 @@ describe('Content Utils', () => {
         new Error('File read error'),
       );
 
-      const config: Config = {
+      const config = {
         contentDirectory: '/content',
       };
 
@@ -157,7 +150,7 @@ describe('Content Utils', () => {
         new Error('Glob error'),
       );
 
-      const config: Config = {
+      const config = {
         contentDirectory: '/content',
       };
 

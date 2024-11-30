@@ -2,7 +2,7 @@ import React from 'react';
 import * as runtime from 'react/jsx-runtime';
 import { evaluate } from '@mdx-js/mdx';
 import rehypePrettyCode from 'rehype-pretty-code';
-import { getBlogPages } from '../../../../content.config';
+import { getBlogPages } from '@content';
 
 export const dynamicParams = false;
 

@@ -16,170 +16,162 @@ import type {
   BaseFrontmatter,
 } from './types';
 
-const getFiles = async (
-  config: Config,
-  pathToFiles?: string,
-): Promise<File[]> => {
-  const pathToContent = path.join(
-    process.cwd(),
-    pathToFiles || config.contentDirectory,
-  );
-  const pattern = `${pathToContent}/**/*.(md|mdx)`;
-
-  try {
-    const files = await glob(pattern, {
-      ignore: ['**/node_modules/**'],
-    });
-
-    return files.map((filePath) => {
-      const relativePath = path.relative(pathToContent, filePath);
-      const slug = relativePath
-        .replace(new RegExp(`${path.extname(filePath)}$`), '')
-        .split('/');
-      return { filePath, params: { slug } };
-    });
-  } catch (error) {
-    console.error('Error reading files:', error);
-    return [];
-  }
-};
-
-const generateMetadata = <T extends MetadataGenerators>(
-  page: BasePage,
-  metadataGenerators: T,
-): InferMetadataTypes<T> => {
-  return Object.entries(metadataGenerators).reduce(
-    (acc, [key, generator]) => {
-      (acc as any)[key] = generator(page);
-      return acc;
-    },
-    {} as InferMetadataTypes<T>,
-  );
-};
-
-const generatePage = async <T extends MetadataGenerators>(
-  file: File,
-  metadataGenerators?: T,
-): Promise<PageWithMetadata<T>> => {
-  try {
-    const mdxSource = await fs.readFile(file.filePath, 'utf-8');
-    const { content, data: frontmatter } = matter(mdxSource);
-
-    const generatedMetadata = metadataGenerators
-      ? generateMetadata({ ...file, content, frontmatter }, metadataGenerators)
-      : ({} as InferMetadataTypes<T>);
-
-    return {
-      ...file,
-      content,
-      frontmatter,
-      metadata: generatedMetadata,
-    };
-  } catch (error) {
-    console.error(`Error generating page for ${file.filePath}:`, error);
-    throw error;
-  }
-};
-
-const getPaths = async (config: Config, contentPath?: string) => {
-  const pathToFiles = contentPath || config.contentDirectory;
-  const files = await getFiles(config, pathToFiles);
-
-  const paths = files.map(({ params }) => ({ params }));
-  return paths;
-};
-
-const generateRelations = <
-  M extends MetadataGenerators,
-  R extends RelationGenerators,
+function createUtils<
   F extends BaseFrontmatter,
->(
-  pages: PageWithMetadata[],
-  relationGenerators: R,
-): Page<M, R, F>[] => {
-  return Object.entries(relationGenerators).reduce(
-    (acc, [key, generator]) => {
-      const relations = pages.map((page, index) =>
-        generator(page, index, pages),
+  M extends MetadataGenerators<F> = MetadataGenerators<F>,
+  R extends RelationGenerators<F, M> = RelationGenerators<F, M>,
+>(config: Config<F, M, R>) {
+  const getFiles = async (
+    config: Config<F, M, R>,
+    pathToFiles?: string,
+  ): Promise<File[]> => {
+    const pathToContent = path.join(
+      process.cwd(),
+      pathToFiles || config.contentDirectory,
+    );
+    const pattern = `${pathToContent}/**/*.(md|mdx)`;
+
+    try {
+      const files = await glob(pattern, {
+        ignore: ['**/node_modules/**'],
+      });
+
+      return files.map((filePath) => {
+        const relativePath = path.relative(pathToContent, filePath);
+        const slug = relativePath
+          .replace(new RegExp(`${path.extname(filePath)}$`), '')
+          .split('/');
+        return { filePath, params: { slug } };
+      });
+    } catch (error) {
+      console.error('Error reading files:', error);
+      return [];
+    }
+  };
+
+  const generateMetadata = (
+    page: BasePage<F>,
+    metadataGenerators: M,
+  ): InferMetadataTypes<F, M> => {
+    return Object.entries(metadataGenerators).reduce(
+      (acc, [key, generator]) => {
+        (acc as any)[key] = generator(page);
+        return acc;
+      },
+      {} as InferMetadataTypes<F, M>,
+    );
+  };
+
+  const generatePage = async (
+    file: File,
+    metadataGenerators?: M,
+  ): Promise<PageWithMetadata<F, M>> => {
+    try {
+      const mdxSource = await fs.readFile(file.filePath, 'utf-8');
+      const { content, data } = matter(mdxSource);
+
+      const frontmatter = data as F;
+
+      const generatedMetadata = metadataGenerators
+        ? generateMetadata(
+            { ...file, content, frontmatter },
+            metadataGenerators,
+          )
+        : ({} as InferMetadataTypes<F, M>);
+
+      return {
+        ...file,
+        content,
+        frontmatter,
+        metadata: generatedMetadata,
+      };
+    } catch (error) {
+      console.error(`Error generating page for ${file.filePath}:`, error);
+      throw error;
+    }
+  };
+
+  const getPaths = async (config: Config<F, M, R>, contentPath?: string) => {
+    const pathToFiles = contentPath || config.contentDirectory;
+    const files = await getFiles(config, pathToFiles);
+
+    const paths = files.map(({ params }) => ({ params }));
+    return paths;
+  };
+
+  const generateRelations = (
+    pages: PageWithMetadata<F, M>[],
+    relationGenerators: R,
+  ): Page<F, M, R>[] => {
+    return Object.entries(relationGenerators).reduce(
+      (acc, [key, generator]) => {
+        const relations = pages.map((page, index) =>
+          generator(page, index, pages),
+        );
+
+        return acc.map((page, index) => ({
+          ...page,
+          metadata: {
+            ...page.metadata,
+            [key]: relations[index],
+          },
+        }));
+      },
+      pages as Page<F, M, R>[],
+    );
+  };
+
+  const filterPages = (
+    pages: Page<F, M, R>[],
+    filter: Filter<F, M, R>,
+  ): Page<F, M, R>[] => pages.filter(filter);
+
+  const getPages = async <C extends Config<F, M, R>>(
+    config: C,
+    filter?: Filter<F, M, R>,
+  ): Promise<Page<F, M, R>[]> => {
+    try {
+      const files = await getFiles(config);
+
+      const pages = await Promise.all(
+        files.map((file) => generatePage(file, config.metadataGenerators)),
       );
 
-      return acc.map((page, index) => ({
-        ...page,
-        metadata: {
-          ...page.metadata,
-          [key]: relations[index],
-        },
-      }));
-    },
-    pages as Page<M, R, F>[],
-  );
-};
+      const pagesWithRelations = config.relationGenerators
+        ? generateRelations(pages, config.relationGenerators)
+        : (pages as Page<F, M, R>[]);
 
-const filterPages = <
-  M extends MetadataGenerators,
-  R extends RelationGenerators,
-  F extends BaseFrontmatter,
->(
-  pages: Page<M, R, F>[],
-  filter: Filter<M, R, F>,
-): Page<M, R, F>[] => pages.filter(filter);
+      return filter
+        ? filterPages(pagesWithRelations, filter)
+        : pagesWithRelations;
+    } catch (error) {
+      console.error('Error getting pages:', error);
+      throw error;
+    }
+  };
 
-const getPages = async <
-  M extends MetadataGenerators,
-  R extends RelationGenerators,
-  F extends BaseFrontmatter,
->(
-  config: Config & { metadataGenerators?: M; relationGenerators?: R },
-  filter?: Filter<M, R, F>,
-): Promise<Page<M, R, F>[]> => {
-  try {
-    const files = await getFiles(config);
+  const getPage = async (
+    config: Config<F, M, R>,
+    slug: string,
+  ): Promise<BasePage | undefined> => {
+    try {
+      const files = await getFiles(config);
+      const pages = await Promise.all(files.map((file) => generatePage(file)));
 
-    const pages = await Promise.all(
-      files.map((file) => generatePage(file, config.metadataGenerators)),
-    );
+      return pages.find(
+        ({ params: { slug: pageSlug } }) => pageSlug.join('/') === slug,
+      );
+    } catch (error) {
+      console.error(`Error getting ${slug}:`, error);
+      throw error;
+    }
+  };
 
-    const pagesWithRelations = config.relationGenerators
-      ? generateRelations<M, R, F>(pages, config.relationGenerators)
-      : (pages as Page<M, R, F>[]);
-
-    return filter
-      ? filterPages<M, R, F>(pagesWithRelations, filter)
-      : pagesWithRelations;
-  } catch (error) {
-    console.error('Error getting pages:', error);
-    throw error;
-  }
-};
-
-const getPage = async (
-  config: Config,
-  slug: string
-): Promise<BasePage | undefined> => {
-  try {
-    const files = await getFiles(config)
-    const pages = await Promise.all(
-      files.map(file => generatePage(file))
-    )
-
-    return pages.find(({ params: { slug: pageSlug } }) => pageSlug.join('/') === slug)
-  } catch (error) {
-    console.error(`Error getting ${slug}:`, error);
-    throw error;
-  }
-}
-
-function createUtils<
-  F extends BaseFrontmatter = BaseFrontmatter,
-  M extends MetadataGenerators = MetadataGenerators,
-  R extends RelationGenerators = RelationGenerators,
->(config: Config & { metadataGenerators?: M; relationGenerators?: R }) {
   return {
     getPaths: async (contentPath?: string) => getPaths(config, contentPath),
-    getPage: ({ slug }: { slug: string }) =>
-      getPage(config, slug),
-    getPages: ({ filter }: { filter?: Filter<M, R, F> } = {}) =>
-      getPages<M, R, F>(config, filter),
+    getPage: ({ slug }: { slug: string }) => getPage(config, slug),
+    getPages: ({ filter }: { filter?: Filter<F, M, R> } = {}) =>
+      getPages(config, filter),
   };
 }
 

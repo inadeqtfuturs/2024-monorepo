@@ -20,19 +20,23 @@ const { getPages: getBlogPages } = createUtils<FrontMatter>({
   contentDirectory: '../../content/garden/',
   metadataGenerators: {
     date: ({ frontmatter: { date } }) => {
-      return dateFormatter.format(new Date(date as string));
+      return dateFormatter.format(new Date(date));
     },
     mentions: ({ content }) => markdownLinkExtractor(content) as string[],
   },
   relationGenerators: {
     mentionedIn: (page, _i, pages) => {
       const pageMentionedIn = pages.filter(({ metadata: { mentions } }) => {
+        // mentions below is inferred as `undefined`
         return mentions.includes(`/garden/${page.params.slug}`);
       });
       return pageMentionedIn;
     },
   },
 });
+
+const [page] = await getBlogPages();
+page?.metadata;
 
 const { getPages, getPage } = createUtils({
   contentDirectory: '../../content/pages',

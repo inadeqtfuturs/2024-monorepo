@@ -1,17 +1,36 @@
-export type MetadataGenerator<T = unknown> = (page: BasePage) => T;
-export type RelationGenerator<T = unknown> = (
-  page: PageWithMetadata,
+export type MetadataGenerator<
+  F extends BaseFrontmatter = BaseFrontmatter,
+  T = unknown,
+> = (page: BasePage<F>) => T;
+
+export type RelationGenerator<
+  F extends BaseFrontmatter,
+  M extends MetadataGenerators<F>,
+  T = unknown,
+> = (
+  page: PageWithMetadata<F, M>,
   index: number,
-  allPages: PageWithMetadata[],
+  allPages: PageWithMetadata<F, M>[],
 ) => T;
 
-export type MetadataGenerators = Record<string, MetadataGenerator>;
-export type RelationGenerators = Record<string, RelationGenerator>;
+export type MetadataGenerators<F extends BaseFrontmatter> = Record<
+  string,
+  MetadataGenerator<F>
+>;
 
-export type Config = {
+export type RelationGenerators<
+  F extends BaseFrontmatter = BaseFrontmatter,
+  M extends MetadataGenerators<F> = MetadataGenerators<F>,
+> = Record<string, RelationGenerator<F, M>>;
+
+export type Config<
+  F extends BaseFrontmatter,
+  M extends MetadataGenerators<F> = MetadataGenerators<F>,
+  R extends RelationGenerators<F, M> = RelationGenerators<F, M>,
+> = {
   contentDirectory: string;
-  metadataGenerators?: MetadataGenerators;
-  relationGenerators?: RelationGenerators;
+  metadataGenerators?: M;
+  relationGenerators?: R;
   runGenerators?: boolean;
 };
 
@@ -24,43 +43,43 @@ export type File = {
   };
 };
 
-export type BasePage<T extends BaseFrontmatter = BaseFrontmatter> = File & {
+export type BasePage<F extends BaseFrontmatter = BaseFrontmatter> = File & {
   content: string;
-  frontmatter: T;
+  frontmatter: F;
   updatedAt?: number;
 };
 
-export type InferMetadataTypes<T extends MetadataGenerators> = {
-  [K in keyof T]: T[K] extends MetadataGenerator ? ReturnType<T[K]> : never;
+export type InferMetadataTypes<
+  F extends BaseFrontmatter,
+  M extends MetadataGenerators<F> = MetadataGenerators<F>,
+> = {
+  [K in keyof M]: M[K] extends MetadataGenerator<F> ? ReturnType<M[K]> : never;
 };
 
-export type InferRelationTypes<T extends RelationGenerators> = {
-  [K in keyof T]: T[K] extends RelationGenerator ? ReturnType<T[K]> : never;
+export type InferRelationTypes<
+  F extends BaseFrontmatter,
+  M extends MetadataGenerators<F>,
+  R extends RelationGenerators<F, M>,
+> = {
+  [K in keyof R]: ReturnType<R[K]>;
 };
 
 export type PageWithMetadata<
-  TGenerators extends MetadataGenerators = MetadataGenerators,
-  TFrontmatter extends BaseFrontmatter = BaseFrontmatter,
-> = BasePage<TFrontmatter> & {
-  metadata: InferMetadataTypes<TGenerators>;
+  F extends BaseFrontmatter,
+  M extends MetadataGenerators<F> = MetadataGenerators<F>,
+> = BasePage<F> & {
+  metadata: InferMetadataTypes<F, M>;
 };
 
 export type Page<
-  TMetadataGenerators extends MetadataGenerators = MetadataGenerators,
-  TRelationGenerators extends RelationGenerators = RelationGenerators,
-  TFrontmatter extends BaseFrontmatter = BaseFrontmatter,
-> = PageWithMetadata<TMetadataGenerators, TFrontmatter> & {
-  metadata: InferMetadataTypes<TMetadataGenerators> &
-    InferRelationTypes<TRelationGenerators>;
-};
+  F extends BaseFrontmatter,
+  M extends MetadataGenerators<F> = MetadataGenerators<F>,
+  R extends RelationGenerators<F, M> = RelationGenerators<F, M>,
+> = PageWithMetadata<F, M>;
 
 export type Filter<
-  TMetadataGenerators extends MetadataGenerators = MetadataGenerators,
-  TRelationGenerators extends RelationGenerators = RelationGenerators,
-  TFrontmatter extends BaseFrontmatter = BaseFrontmatter,
-  T extends Page<TMetadataGenerators, TRelationGenerators, TFrontmatter> = Page<
-    TMetadataGenerators,
-    TRelationGenerators,
-    TFrontmatter
-  >,
+  F extends BaseFrontmatter = BaseFrontmatter,
+  M extends MetadataGenerators<F> = MetadataGenerators<F>,
+  R extends RelationGenerators<F, M> = RelationGenerators<F, M>,
+  T extends Page<F, M, R> = Page<F, M, R>,
 > = (page: T, index: number, array: T[]) => boolean;
