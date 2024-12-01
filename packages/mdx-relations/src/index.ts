@@ -13,11 +13,10 @@ import type {
   Page,
   PageWithMetadata,
   RelationGenerators,
-  BaseFrontmatter,
 } from './types';
 
 function createUtils<
-  F extends BaseFrontmatter,
+  F,
   M extends MetadataGenerators<F> = MetadataGenerators<F>,
   R extends RelationGenerators<F, M> = RelationGenerators<F, M>,
 >(config: Config<F, M, R>) {
@@ -153,7 +152,7 @@ function createUtils<
   const getPage = async (
     config: Config<F, M, R>,
     slug: string,
-  ): Promise<BasePage | undefined> => {
+  ): Promise<BasePage<F> | undefined> => {
     try {
       const files = await getFiles(config);
       const pages = await Promise.all(files.map((file) => generatePage(file)));

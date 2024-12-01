@@ -1,3 +1,7 @@
+* {
+  font-family: system-ui, sans-serif;
+}
+
 p,
 a,
 li,
@@ -13,8 +17,10 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: Helvetica Neue;
+  font-weight: normal;
   color: var(--text);
-  margin: 0 0 var(--space-3);
+  line-height: 1;
 }
 
 a {
@@ -24,5 +30,52 @@ a {
   &:hover,
   &:focus {
     color: color-mix(in srgb, var(--text), black 3%);
+  }
+}
+
+section.post {
+  gap: var(--space-4);
+  display: grid;
+
+  ol,
+  ul {
+    padding-left: var(--space-8);
+    ol,
+    ul {
+      padding-left: var(--space-8);
+    }
+  }
+  /* footnotes */
+  sup a {
+    font-size: var(--font-size-2xs);
+    text-decoration: none;
+  }
+
+  a.data-footnote-backref {
+    text-decoration: none;
+    padding-left: var(--space-1);
+  }
+
+  section.footnotes {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  /* code */
+  figure[data-rehype-pretty-code-figure] pre {
+    padding: var(--space-3);
+    border-radius: var(--radii-md);
+    outline: 1px solid color-mix(in srgb, var(--text), black 50%);
+
+    span {
+      font-family: Menlo, monospace;
+      font-size: var(--font-size-xs);
+      white-space: break-spaces;
+    }
+  }
+
+  code {
+    font-family: Menlo, monospace;
+    font-size: inherit;
   }
 }

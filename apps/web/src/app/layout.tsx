@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+/* import { Inter } from 'next/font/google'; */
 import React from 'react';
 import type { ReactNode } from 'react';
 
@@ -8,7 +8,7 @@ import ThemeScript from '@/lib/getTheme';
 import '@if/ui/styles.css';
 import '@/theme/global.css';
 
-const inter = Inter({ subsets: ['latin'] });
+/* const inter = Inter({ subsets: ['latin'] }); */
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,7 +25,7 @@ export default function RootLayout({
       <head>
         <ThemeScript />
       </head>
-      <body className={inter.className}>
+      <body>
         <Layout>{children}</Layout>
       </body>
     </html>

@@ -35,9 +35,6 @@ const { getPages: getBlogPages } = createUtils<FrontMatter>({
   },
 });
 
-const [page] = await getBlogPages();
-page?.metadata;
-
 const { getPages, getPage } = createUtils({
   contentDirectory: '../../content/pages',
 });

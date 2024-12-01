@@ -3,6 +3,8 @@ import * as runtime from 'react/jsx-runtime';
 import { evaluate } from '@mdx-js/mdx';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { getBlogPages } from '@content';
+import PostHeader from './components/PostHeader';
+import remarkGfm from 'remark-gfm';
 
 export const dynamicParams = false;
 
@@ -19,14 +21,15 @@ async function GardenPage({ params: { slug } }: { params: { slug: string } }) {
 
   const { default: Content } = await evaluate(content, {
     ...runtime,
-    rehypePlugins: [rehypePrettyCode],
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [[rehypePrettyCode, { theme: 'nord' }]],
   });
 
   return (
-    <div>
-      <h1>garden page for {slug}</h1>
+    <section className='post'>
+      <PostHeader frontmatter={frontmatter} metadata={metadata} />
       <Content />
-    </div>
+    </section>
   );
 }
 
