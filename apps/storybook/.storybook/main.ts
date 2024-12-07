@@ -1,7 +1,13 @@
 import type { StorybookConfig } from '@storybook/nextjs';
-import flexbugFixes from 'postcss-flexbugs-fixes';
-import presetEnv from 'postcss-preset-env';
-import { dirname, join } from 'node:path';
+import { join, dirname } from 'node:path';
+
+/**
+ * This function is used to resolve the absolute path of a package.
+ * It is needed in projects that use Yarn PnP or are set up within a monorepo.
+ */
+function getAbsolutePath(value: string): unknown {
+  return dirname(require.resolve(join(value, 'package.json')));
+}
 
 const config: StorybookConfig = {
   stories: ['../../../packages/ui/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -10,43 +16,9 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@chromatic-com/storybook',
-    {
-      name: '@storybook/addon-styling-webpack',
-      options: {
-        rules: [
-          {
-            test: /\.css$/,
-            use: [
-              'style-loader',
-              {
-                loader: 'css-loader',
-                options: { importLoaders: 1 },
-              },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  implementation: require.resolve('postcss'),
-                  postcssOptions: {
-                    plugins: [
-                      flexbugFixes(),
-                      presetEnv({
-                        autoprefixer: {
-                          flexbox: 'no-2009',
-                        },
-                        stage: 2,
-                      }),
-                    ],
-                  },
-                },
-              },
-            ],
-          },
-        ],
-      },
-    },
   ],
   framework: {
-    name: '@storybook/nextjs',
+    name: getAbsolutePath('@storybook/nextjs') as string,
     options: {
       nextConfigPath: '../../web/next.config.js',
     },

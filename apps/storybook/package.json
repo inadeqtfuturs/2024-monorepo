@@ -22,10 +22,6 @@
     "@storybook/react": "^8.4.7",
     "@storybook/test": "^8.4.7",
     "@types/node": "^22.10.1",
-    "postcss": "^8.4.49",
-    "postcss-flexbugs-fixes": "^5.0.2",
-    "postcss-loader": "^8.1.1",
-    "postcss-preset-env": "^10.1.1",
     "typescript": "^5.7.2"
   }
 }
