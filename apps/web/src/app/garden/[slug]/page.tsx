@@ -26,10 +26,12 @@ async function GardenPage({ params: { slug } }: { params: { slug: string } }) {
   });
 
   return (
-    <section className='post'>
-      <PostHeader frontmatter={frontmatter} metadata={metadata} />
-      <Content />
-    </section>
+    <main>
+      <section className='mdx'>
+        <PostHeader frontmatter={frontmatter} metadata={metadata} />
+        <Content />
+      </section>
+    </main>
   );
 }
 

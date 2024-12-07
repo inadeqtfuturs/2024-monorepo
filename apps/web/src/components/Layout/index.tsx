@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import React, { type PropsWithChildren } from 'react';
+import { Fallback } from './ToggleTheme';
 
 import styles from './index.module.css';
 import dynamic from 'next/dynamic';
 
 const ToggleTheme = dynamic(() => import('./ToggleTheme'), {
   ssr: false,
+  loading: Fallback,
 });
 
 const menuConfig = [
@@ -17,6 +19,10 @@ const menuConfig = [
 
 const footerMenu = [
   { href: 'https://github.com/inadeqtfuturs', label: 'github' },
+  {
+    href: 'https://bsky.app/profile/speculativedev.bsky.social',
+    label: 'bluesky',
+  },
   { href: 'https://www.polywork.com/inadeqt_futurs', label: 'polywork' },
 ];
 
@@ -31,7 +37,7 @@ function Layout({ children }: PropsWithChildren) {
           <ul>
             {menuConfig.map(({ label, href }) => (
               <li key={label}>
-                <Link href={href} className={styles.headerLink}>
+                <Link href={href} className={styles.link}>
                   {label}
                 </Link>
               </li>
@@ -39,13 +45,15 @@ function Layout({ children }: PropsWithChildren) {
           </ul>
         </nav>
       </header>
-      <main>{children}</main>
+      {children}
       <footer className={styles.sharedLayout}>
         <nav>
           <ul>
             {footerMenu.map(({ label, href }) => (
               <li key={label}>
-                <Link href={href}>{label}</Link>
+                <Link href={href} className={styles.link}>
+                  {label}
+                </Link>
                 {label !== 'polywork' && (
                   <span className={styles.spacer}>/</span>
                 )}

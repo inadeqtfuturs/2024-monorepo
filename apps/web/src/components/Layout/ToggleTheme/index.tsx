@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 
+import styles from './index.module.css';
+
 function ToggleTheme() {
   const [theme, setTheme] = useState(global.window?.__theme || 'light');
 
@@ -16,10 +18,18 @@ function ToggleTheme() {
   }, []);
 
   return (
-    <button type='button' onClick={toggleTheme}>
+    <button type='button' onClick={toggleTheme} className={styles.toggle}>
       {theme}
     </button>
   );
 }
 
 export default ToggleTheme;
+
+export function Fallback() {
+  return (
+    <button type='button' className={styles.toggle}>
+      theme
+    </button>
+  );
+}

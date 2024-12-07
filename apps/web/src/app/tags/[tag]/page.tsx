@@ -1,5 +1,5 @@
 import React from 'react';
-import { getBlogPages } from '../../../../content.config';
+import { getBlogPages } from '@content';
 
 export const dynamicParams = false;
 

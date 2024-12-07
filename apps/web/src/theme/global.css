@@ -21,4 +21,17 @@ body {
     width: 100%;
     flex-shrink: 0;
   }
+  row-gap: 0.5rem;
+  @media (min-width: 768px) {
+    row-gap: 2rem;
+  }
+}
+
+main.index {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  @media (min-width: 768px) {
+    row-gap: 3rem;
+  }
 }

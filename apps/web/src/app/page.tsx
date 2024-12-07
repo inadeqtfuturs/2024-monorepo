@@ -2,7 +2,7 @@ import React from 'react';
 import * as runtime from 'react/jsx-runtime';
 import { evaluate } from '@mdx-js/mdx';
 
-import { getBlogPages, getPage } from '../../content.config';
+import { getBlogPages, getPage } from '@content';
 import getGithubRepoInfo from '@/lib/getGithubRepoInfo';
 import RecentProjects from '@/components/RecentProjects';
 import RecentWriting from '@/components/RecentWriting';
@@ -24,16 +24,20 @@ async function Home() {
   const { content } = pageData;
   const { default: Content } = await evaluate(content, {
     ...runtime,
-    Fragment: 'section',
+    Fragment: (props: object) =>
+      React.createElement('section', {
+        className: 'mdx',
+        ...props,
+      }),
     jsx: runtime.jsx,
   });
 
   return (
-    <>
+    <main className='index'>
       <Content />
       {repositories && <RecentProjects repositories={repositories} />}
       <RecentWriting posts={[first, second]} />
-    </>
+    </main>
   );
 }
 

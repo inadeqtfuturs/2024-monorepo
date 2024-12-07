@@ -4,6 +4,7 @@
 
 p,
 a,
+ul,
 li,
 span {
   font-size: var(--font-size-sm);
@@ -33,7 +34,7 @@ a {
   }
 }
 
-section.post {
+section.mdx {
   gap: var(--space-4);
   display: grid;
 

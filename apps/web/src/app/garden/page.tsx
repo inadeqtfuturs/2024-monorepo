@@ -2,12 +2,14 @@ import React from 'react';
 import PostExcerpt from '@/components/RecentWriting/PostExcerpt';
 import { getBlogPages } from '@content';
 
+import styles from './index.module.css'
+
 async function Garden() {
   const blogPages = await getBlogPages({
     filter: ({ frontmatter: { draft } }) => !draft,
   });
   return (
-    <div>
+    <main className={styles.gardenIndex}>
       <h1>garden</h1>
       {blogPages
         .sort(({ frontmatter: { date: a } }, { frontmatter: { date: b } }) =>
@@ -16,7 +18,7 @@ async function Garden() {
         .map((post) => (
           <PostExcerpt post={post} key={post.frontmatter.title} />
         ))}
-    </div>
+    </main>
   );
 }
 
