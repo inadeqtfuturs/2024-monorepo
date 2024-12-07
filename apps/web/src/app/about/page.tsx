@@ -1,9 +1,12 @@
 import React from 'react';
 import * as runtime from 'react/jsx-runtime';
+import type { Metadata } from 'next';
 import { evaluate } from '@mdx-js/mdx';
 import remarkGfm from 'remark-gfm';
-
 import { getPage } from '@content';
+import defaultMetadata from '@/lib/metadata';
+
+export const metadata: Metadata = defaultMetadata({ title: 'about' });
 
 async function About() {
   const pageData = await getPage({ slug: 'about' });

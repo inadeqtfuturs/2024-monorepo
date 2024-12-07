@@ -1,8 +1,15 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import PostExcerpt from '@/components/RecentWriting/PostExcerpt';
 import { getBlogPages } from '@content';
+import defaultMetadata from '@/lib/metadata';
 
-import styles from './index.module.css'
+import styles from './index.module.css';
+
+export const metadata: Metadata = defaultMetadata({
+  title: 'garden',
+  description: 'writing stuff online',
+});
 
 async function Garden() {
   const blogPages = await getBlogPages({

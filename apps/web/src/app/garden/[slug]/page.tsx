@@ -5,8 +5,29 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import { getBlogPages } from '@content';
 import PostHeader from './components/PostHeader';
 import remarkGfm from 'remark-gfm';
+import defaultMetadata from '@/lib/metadata';
 
 export const dynamicParams = false;
+export async function generateMetadata({
+  params: { slug },
+}: { params: { slug: string } }) {
+  const [pageData] = await getBlogPages({
+    filter: ({ params: { slug: pageSlug } }) => pageSlug[0] === slug,
+  });
+
+  if (!pageData) {
+    return defaultMetadata();
+  }
+
+  const {
+    frontmatter: { title, excerpt },
+  } = pageData;
+
+  return defaultMetadata({
+    title,
+    description: excerpt,
+  });
+}
 
 async function GardenPage({ params: { slug } }: { params: { slug: string } }) {
   const [pageData] = await getBlogPages({
