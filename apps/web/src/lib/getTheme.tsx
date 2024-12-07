@@ -37,7 +37,6 @@ function code() {
     window.__setPreferredTheme(e.matches ? 'dark' : 'light');
   });
 
-  console.log('@--> setting', preferredTheme);
   setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
 }
 

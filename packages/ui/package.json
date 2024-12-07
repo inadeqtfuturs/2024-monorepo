@@ -12,20 +12,20 @@
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.0",
+    "@biomejs/biome": "^1.9.4",
     "@if/tooling": "*",
-    "@storybook/react": "^8.1.6",
-    "@storybook/test": "^8.1.6",
-    "@testing-library/dom": "^10.1.0",
-    "@testing-library/react": "^16.0.0",
-    "@turbo/gen": "^2.0.6",
-    "@types/eslint": "^8.56.5",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.24",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "react": "^18.2.0",
-    "typescript": "^5.3.3",
+    "@storybook/react": "^8.4.7",
+    "@storybook/test": "^8.4.7",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.1.0",
+    "@turbo/gen": "^2.3.3",
+    "@types/eslint": "^9.6.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.1",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.1",
+    "react": "^19.0.0",
+    "typescript": "^5.7.2",
     "typescript-plugin-css-modules": "^5.1.0"
   }
 }

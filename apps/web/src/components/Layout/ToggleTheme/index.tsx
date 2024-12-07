@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './index.module.css';
 
 function ToggleTheme() {
+  const [isClient, setIsClient] = useState(false);
   const [theme, setTheme] = useState(global.window?.__theme || 'light');
 
   const isDark = theme === 'dark';
@@ -15,7 +16,17 @@ function ToggleTheme() {
 
   useEffect(() => {
     global.window.__onThemeChange = setTheme;
+    setIsClient(true);
   }, []);
+
+  if (!isClient) {
+    console.log('@--> NO');
+    return (
+      <button type='button' className={styles.toggle}>
+        loading
+      </button>
+    );
+  }
 
   return (
     <button type='button' onClick={toggleTheme} className={styles.toggle}>
@@ -25,11 +36,3 @@ function ToggleTheme() {
 }
 
 export default ToggleTheme;
-
-export function Fallback() {
-  return (
-    <button type='button' className={styles.toggle}>
-      theme
-    </button>
-  );
-}

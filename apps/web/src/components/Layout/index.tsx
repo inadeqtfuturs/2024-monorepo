@@ -1,14 +1,8 @@
-import Link from 'next/link';
 import React, { type PropsWithChildren } from 'react';
-import { Fallback } from './ToggleTheme';
+import Link from 'next/link';
+import ToggleTheme from './ToggleTheme';
 
 import styles from './index.module.css';
-import dynamic from 'next/dynamic';
-
-const ToggleTheme = dynamic(() => import('./ToggleTheme'), {
-  ssr: false,
-  loading: Fallback,
-});
 
 const menuConfig = [
   { label: 'writing', href: '/garden' },

@@ -9,23 +9,23 @@
     "lint": "biome check --write ."
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.0",
-    "@chromatic-com/storybook": "^1.5.0",
+    "@biomejs/biome": "^1.9.4",
+    "@chromatic-com/storybook": "^3.2.2",
     "@if/tooling": "*",
-    "@storybook/addon-essentials": "^8.1.6",
-    "@storybook/addon-interactions": "^8.1.6",
-    "@storybook/addon-links": "^8.1.6",
-    "@storybook/addon-styling-webpack": "^1.0.0",
-    "@storybook/blocks": "^8.1.6",
-    "@storybook/cli": "^8.1.6",
-    "@storybook/nextjs": "^8.1.6",
-    "@storybook/react": "^8.1.6",
-    "@storybook/test": "^8.1.6",
-    "@types/node": "^20.11.24",
-    "postcss": "^8.4.38",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-links": "^8.4.7",
+    "@storybook/addon-styling-webpack": "^1.0.1",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/cli": "^8.4.7",
+    "@storybook/nextjs": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/test": "^8.4.7",
+    "@types/node": "^22.10.1",
+    "postcss": "^8.4.49",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-loader": "^8.1.1",
-    "postcss-preset-env": "^9.5.14",
-    "typescript": "^5.3.3"
+    "postcss-preset-env": "^10.1.1",
+    "typescript": "^5.7.2"
   }
 }
