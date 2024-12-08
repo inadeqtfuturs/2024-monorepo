@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ToggleTheme from './ToggleTheme';
 
 import styles from './index.module.css';
+import ThemeProvider from './ThemeContext';
 
 const menuConfig = [
   { label: 'writing', href: '/garden' },
@@ -22,7 +23,7 @@ const footerMenu = [
 
 function Layout({ children }: PropsWithChildren) {
   return (
-    <>
+    <ThemeProvider>
       <header className={styles.sharedLayout}>
         <Link href='/' aria-label='home' className={styles.branding}>
           home
@@ -54,7 +55,7 @@ function Layout({ children }: PropsWithChildren) {
         </nav>
         <ToggleTheme />
       </footer>
-    </>
+    </ThemeProvider>
   );
 }
 
