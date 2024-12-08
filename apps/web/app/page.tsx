@@ -2,7 +2,7 @@ import React from 'react';
 import * as runtime from 'react/jsx-runtime';
 import { evaluate } from '@mdx-js/mdx';
 
-import { getBlogPages, getPage } from '@content';
+import { getBlogPages, getPage, type Page } from '@content';
 import getGithubRepoInfo from '@/lib/getGithubRepoInfo';
 import RecentProjects from '@/components/RecentProjects';
 import RecentWriting from '@/components/RecentWriting';
@@ -35,8 +35,8 @@ async function Home() {
   return (
     <main className='index'>
       <Content />
+      <RecentWriting posts={[second, first] as Page[]} />
       {repositories && <RecentProjects repositories={repositories} />}
-      <RecentWriting posts={[first, second]} />
     </main>
   );
 }

@@ -20,7 +20,6 @@ function ToggleTheme() {
   }, []);
 
   if (!isClient) {
-    console.log('@--> NO');
     return (
       <button type='button' className={styles.toggle}>
         loading

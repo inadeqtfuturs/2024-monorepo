@@ -16,7 +16,7 @@ function RecentProjects({ repositories }: { repositories: Repo[] }) {
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h3>recent projects</h3>
+        <h3>open source and previous work</h3>
         <Link href='/projects'>see more</Link>
       </div>
       <div className={styles.wrapper}>

@@ -12,8 +12,6 @@ async function GardenPage({ params: { tag } }: { params: { tag: string } }) {
     return null;
   }
 
-  console.log('@--> pages', pages.length);
-
   return (
     <div>
       <h1>garden page for {tag}</h1>

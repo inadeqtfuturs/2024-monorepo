@@ -8,7 +8,7 @@ const menuConfig = [
   { label: 'writing', href: '/garden' },
   { label: 'projects', href: '/projects' },
   { label: 'changelog', href: '/changelog' },
-  { label: 'about', href: '/about' },
+  { label: 'about', href: '/whoami' },
 ];
 
 const footerMenu = [
@@ -48,9 +48,6 @@ function Layout({ children }: PropsWithChildren) {
                 <Link href={href} className={styles.link}>
                   {label}
                 </Link>
-                {label !== 'polywork' && (
-                  <span className={styles.spacer}>/</span>
-                )}
               </li>
             ))}
           </ul>
