@@ -8,10 +8,11 @@
   justify-content: space-between;
   align-items: baseline;
 
-  * {
+  & * {
     margin: 0;
   }
-  h3 {
+
+  & h3 {
     &::after {
       content: "";
       height: 1px;

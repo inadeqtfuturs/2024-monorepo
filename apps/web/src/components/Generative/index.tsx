@@ -24,8 +24,6 @@ function Generative() {
   const { theme } = useContext(ThemeContext);
   const canvasRef = useRef(null);
 
-  console.log('@--> theme', theme);
-
   const baseSketch = useMemo(() => {
     const sliceCount = 10000;
     const slices = Array.from(new Array(sliceCount)).map((_, i, list) => {
