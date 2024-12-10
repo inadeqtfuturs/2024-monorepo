@@ -25,7 +25,7 @@ function Generative() {
   const canvasRef = useRef(null);
 
   const baseSketch = useMemo(() => {
-    const sliceCount = 10000;
+    const sliceCount = 20000;
     const slices = Array.from(new Array(sliceCount)).map((_, i, list) => {
       const t = i / Math.max(1, sliceCount - 1);
 
@@ -59,11 +59,18 @@ function Generative() {
   const sketch = useMemo(() => {
     const color =
       theme === 'dark' ? 'rgba(250, 250, 250, 0.9)' : 'rgba(0, 0, 0, 0.7)';
+    const bg = theme === 'dark' ? '#1f2027' : '#e5e5e5';
 
     return ({ width, height }) => {
       return ({ context }) => {
-        context.fillStyle = 'transparent';
+        context.fillStyle = bg;
         context.fillRect(0, 0, width, height);
+
+        context.beginPath();
+        context.arc(2, 2, 1.5, 0, Math.PI * 2);
+        context.fillStyle =
+          theme === 'dark' ? 'rgba(255, 255, 255, 0.01)' : 'rgba(0,0,0,0.05)';
+        context.fill();
 
         baseSketch.forEach((slice) => {
           context.save();
@@ -78,13 +85,11 @@ function Generative() {
           context.stroke();
           context.restore();
         });
-        context.fillRect(0, 0, width, height);
       };
     };
   }, [theme, baseSketch]);
 
   useEffect(() => {
-    console.log('@--> hitting');
     canvasSketch(
       sketch,
       {
