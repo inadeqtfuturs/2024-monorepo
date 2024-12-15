@@ -15,13 +15,11 @@ async function Home() {
   // most recent 2 posts
   const pages = await getBlogPages();
   const [first, second] = pages.slice(-2);
-  const repositories = await getGithubRepoInfo('inadeqtfuturs', [
-    'garden',
-    'next-mdx-relations',
-    'if-sf',
-  ]);
-
-  console.log('@--> repositories', repositories);
+  /* const repositories = await getGithubRepoInfo('inadeqtfuturs', [ */
+  /*   'garden', */
+  /*   'next-mdx-relations', */
+  /*   'if-sf', */
+  /* ]); */
 
   const { content } = pageData;
   const { default: Content } = await evaluate(content, {
@@ -37,7 +35,7 @@ async function Home() {
     <main className='index'>
       <Content />
       <RecentWriting posts={[second, first] as Page[]} />
-      {repositories && <RecentProjects repositories={repositories} />}
+      {/* {repositories && <RecentProjects repositories={repositories} />} */}
     </main>
   );
 }
