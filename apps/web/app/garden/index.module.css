@@ -1,0 +1,7 @@
+.gardenIndex {
+  display: grid;
+  gap: 1rem;
+  @media (min-width: 768px) {
+    gap: 2rem;
+  }
+}

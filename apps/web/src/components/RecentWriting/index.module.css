@@ -1,0 +1,36 @@
+.section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  & * {
+    margin: 0;
+  }
+
+  & h3 {
+    &::after {
+      content: "";
+      height: 1px;
+      width: 80px;
+      background: var(--text);
+      display: block;
+      margin-top: var(--space-4);
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

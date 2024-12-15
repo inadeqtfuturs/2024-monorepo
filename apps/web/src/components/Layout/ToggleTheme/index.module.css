@@ -1,0 +1,14 @@
+.toggle {
+  all: unset;
+  text-decoration: none;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radii-md);
+  color: var(--text);
+  transition: background 0.3s;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background: color-mix(in srgb, var(--text), transparent 93%);
+  }
+}

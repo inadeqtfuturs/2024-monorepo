@@ -1,0 +1,32 @@
+.changelogEntry {
+  display: grid;
+
+  &[open] {
+    gap: var(--space-2);
+
+    & summary div {
+      background: color-mix(in srgb, var(--text), black 50%);
+    }
+  }
+}
+
+.changelogSummary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover h2,
+  &:focus h2 {
+    cursor: pointer;
+    color: color-mix(in srgb, var(--text), black 10%);
+  }
+
+  & div {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    border: 1px solid color-mix(in srgb, var(--text), black 50%);
+    background: color-mix(in srgb, var(--text), transparent 95%);
+  }
+}

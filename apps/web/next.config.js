@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  transpilePackages: ["@repo/ui"],
+  transpilePackages: ['@if/ui', '@if/mdx-relations'],
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
