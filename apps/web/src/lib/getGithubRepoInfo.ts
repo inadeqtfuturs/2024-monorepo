@@ -9,6 +9,8 @@ async function getGithubRepoInfo(
 ) {
   if (!user) return null;
 
+  console.log('@--> process', process.env.GH_TOKEN);
+
   const repositories = await fetch(
     `https://api.github.com/users/${user}/repos`,
     {
@@ -44,7 +46,11 @@ async function getGithubRepoInfo(
           Authorization: `Bearer ${process.env.GH_TOKEN}`,
           'X-GitHub-Api-Version': '2022-11-28',
         },
-      }).then((resp) => resp.json());
+      })
+        .then((resp) => resp.json())
+        .catch((e) => {
+          throw new Error(e);
+        });
 
       return {
         ...r,
