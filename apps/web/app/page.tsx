@@ -21,6 +21,8 @@ async function Home() {
     'if-sf',
   ]);
 
+  console.log('@--> repositories', repositories);
+
   const { content } = pageData;
   const { default: Content } = await evaluate(content, {
     ...runtime,
@@ -29,7 +31,6 @@ async function Home() {
         className: 'mdx',
         ...props,
       }),
-    jsx: runtime.jsx,
   });
 
   return (
