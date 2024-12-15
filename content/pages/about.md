@@ -3,6 +3,8 @@ title: about
 type: page
 ---
 
+# whoami
+
 hi. 🌱  i'm alex christie and i make things online. currently, i'm a senior software engineer at [limber health](https://www.limberhealth.com), where i work on react native, react, and serverless node projects, and help create products that enhance patient care and engagement.
 
 ~currently, i'm a lead software engineer working on developer experience and leading teams to build web sites, custom CMSs, and saas products at [graveflex](https://graveflex.com).~

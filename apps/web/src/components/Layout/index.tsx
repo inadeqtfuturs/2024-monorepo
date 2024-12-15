@@ -7,7 +7,7 @@ import ThemeProvider from './ThemeContext';
 
 const menuConfig = [
   { label: 'writing', href: '/garden' },
-  { label: 'projects', href: '/projects' },
+  /* { label: 'projects', href: '/projects' }, */
   { label: 'changelog', href: '/changelog' },
   { label: 'about', href: '/whoami' },
 ];

@@ -42,6 +42,13 @@ const { getPages: getWork } = createUtils({
   contentDirectory: '../../content/work',
 });
 
+const { getPages: getChangelogEntries } = createUtils<{ title: string }>({
+  contentDirectory: '../../content/changelog',
+});
+
+export type ChangelogEntryType = Awaited<
+  ReturnType<typeof getChangelogEntries>
+>[number];
 export type Page = Awaited<ReturnType<typeof getBlogPages>>[number];
 
-export { getBlogPages, getPage, getPages, getWork };
+export { getBlogPages, getPage, getPages, getWork, getChangelogEntries };

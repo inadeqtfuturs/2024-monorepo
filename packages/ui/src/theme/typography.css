@@ -28,6 +28,7 @@ a {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+
   &:hover,
   &:focus {
     color: color-mix(in srgb, var(--text), black 3%);
@@ -41,11 +42,13 @@ section.mdx {
   ol,
   ul {
     padding-left: var(--space-8);
+
     ol,
     ul {
       padding-left: var(--space-8);
     }
   }
+
   /* footnotes */
   sup a {
     font-size: var(--font-size-2xs);
@@ -77,6 +80,6 @@ section.mdx {
 
   code {
     font-family: Menlo, monospace;
-    font-size: inherit;
+    font-size: 95%;
   }
 }
