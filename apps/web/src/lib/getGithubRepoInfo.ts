@@ -15,8 +15,6 @@ async function getGithubRepoInfo(
     return null;
   }
 
-  console.log('@--> process', process.env.GH_TOKEN);
-
   const repositories = await fetch(
     `https://api.github.com/users/${user}/repos`,
     {

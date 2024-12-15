@@ -34,7 +34,6 @@ function code() {
   const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
   darkQuery.addEventListener('change', (e) => {
-    console.log('@--> changing');
     window.__setPreferredTheme(e.matches ? 'dark' : 'light');
   });
 
