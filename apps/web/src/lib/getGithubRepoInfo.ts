@@ -7,7 +7,13 @@ async function getGithubRepoInfo(
   user: string,
   selectRepositories: string[] = [],
 ) {
-  if (!user) return null;
+  if (!user) {
+    return null;
+  }
+
+  if (!process.env.GH_TOKEN) {
+    return null;
+  }
 
   console.log('@--> process', process.env.GH_TOKEN);
 
