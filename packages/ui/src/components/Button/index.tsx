@@ -1,16 +1,15 @@
 'use client';
 import React from 'react';
-import type { ReactNode } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 import classname from '../../utils/classname';
 import styles from './Button.module.css';
 
-interface ButtonProps {
-  children: ReactNode;
+type ButtonProps = PropsWithChildren & {
   onClick?: () => void;
   className?: string;
-}
+};
 
-function Button({ children, className, onClick = () => {} }: ButtonProps) {
+function Button({ children, className, onClick = () => { } }: ButtonProps) {
   return (
     <button
       type='button'

@@ -15,21 +15,21 @@
     "canvas-sketch": "^0.7.7",
     "canvas-sketch-util": "^1.10.0",
     "markdown-link-extractor": "^4.0.2",
-    "next": "^15.0.4",
+    "next": "^15.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rehype-pretty-code": "^0.14.0",
     "remark-gfm": "^4.0.0",
-    "shiki": "^1.24.0"
+    "shiki": "^1.24.4"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@if/tooling": "*",
-    "@next/eslint-plugin-next": "^15.0.4",
+    "@next/eslint-plugin-next": "^15.1.2",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.10.1",
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.1",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "typescript": "^5.7.2"
   }
 }

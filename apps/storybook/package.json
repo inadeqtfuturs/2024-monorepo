@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@chromatic-com/storybook": "^3.2.2",
+    "@chromatic-com/storybook": "^3.2.3",
     "@if/tooling": "*",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
@@ -21,7 +21,7 @@
     "@storybook/nextjs": "^8.4.7",
     "@storybook/react": "^8.4.7",
     "@storybook/test": "^8.4.7",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.10.2",
     "typescript": "^5.7.2"
   }
 }

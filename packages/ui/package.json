@@ -21,9 +21,9 @@
     "@turbo/gen": "^2.3.3",
     "@types/eslint": "^9.6.1",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.10.1",
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.1",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "react": "^19.0.0",
     "typescript": "^5.7.2",
     "typescript-plugin-css-modules": "^5.1.0"
