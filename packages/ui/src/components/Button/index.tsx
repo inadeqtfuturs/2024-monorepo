@@ -1,6 +1,7 @@
 'use client';
+
 import React from 'react';
-import type { PropsWithChildren, ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 import classname from '../../utils/classname';
 import styles from './Button.module.css';
 
