@@ -8,21 +8,19 @@ body {
 body {
   display: grid;
   grid-template-rows: min-content auto min-content;
-  grid-template-columns: minmax(var(--space-4), 1fr) minmax(0, 780px) minmax(
-      var(--space-4),
-      1fr
-    );
+  grid-template-columns: minmax(var(--space-4), 1fr) minmax(0, 780px) minmax(var(--space-4),
+      1fr);
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100svh;
   row-gap: 0.5rem;
 
   @media (min-width: 768px) {
     row-gap: 2rem;
   }
 
-  & > header,
-  & > main,
-  & > footer {
+  &>header,
+  &>main,
+  &>footer {
     grid-column: 2;
     width: 100%;
     flex-shrink: 0;
