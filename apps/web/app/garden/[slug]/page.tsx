@@ -9,8 +9,9 @@ import defaultMetadata from '@/lib/metadata';
 
 export const dynamicParams = false;
 export async function generateMetadata({
-  params: { slug },
-}: { params: { slug: string } }) {
+  params,
+}: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const [pageData] = await getBlogPages({
     filter: ({ params: { slug: pageSlug } }) => pageSlug[0] === slug,
   });
@@ -29,7 +30,8 @@ export async function generateMetadata({
   });
 }
 
-async function GardenPage({ params: { slug } }: { params: { slug: string } }) {
+async function GardenPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const [pageData] = await getBlogPages({
     filter: ({ params: { slug: pageSlug } }) => pageSlug[0] === slug,
   });
