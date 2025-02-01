@@ -12,7 +12,7 @@ async function Changelog() {
         <h1>changelog</h1>
         <p>a running stream of events updated roughly monthly</p>
       </div>
-      {changelogEntries.map((entry, i) => (
+      {changelogEntries.reverse().map((entry, i) => (
         <ChangelogEntry entry={entry} open={i === 0} key={entry.filePath} />
       ))}
     </main>
