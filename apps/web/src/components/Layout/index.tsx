@@ -18,7 +18,6 @@ const footerMenu = [
     href: 'https://bsky.app/profile/speculativedev.bsky.social',
     label: 'bluesky',
   },
-  { href: 'https://www.polywork.com/inadeqt_futurs', label: 'polywork' },
 ];
 
 function Layout({ children }: PropsWithChildren) {
