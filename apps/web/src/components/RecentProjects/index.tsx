@@ -17,7 +17,6 @@ function RecentProjects({ repositories }: { repositories: Repo[] }) {
     <section className={styles.section}>
       <div className={styles.header}>
         <h3>open source and previous work</h3>
-        {/* <Link href='/projects'>see more</Link> */}
       </div>
       <div className={styles.wrapper}>
         {repositories.map(
