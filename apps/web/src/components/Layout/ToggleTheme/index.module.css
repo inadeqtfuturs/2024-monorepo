@@ -1,6 +1,7 @@
 .toggle {
   all: unset;
   text-decoration: none;
+  font-size: var(--font-size-sm);
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radii-md);
   color: var(--text);
