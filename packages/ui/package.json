@@ -5,7 +5,8 @@
   "exports": {
     "./components/button": "./src/components/Button/index.tsx",
     "./theme/tokens": "./src/theme/tokens.css",
-    "./styles.css": "./src/theme/styles.css"
+    "./styles.css": "./src/theme/styles.css",
+    "./utils/classname": "./src/utils/classname.tsx"
   },
   "scripts": {
     "lint": "biome check --write .",

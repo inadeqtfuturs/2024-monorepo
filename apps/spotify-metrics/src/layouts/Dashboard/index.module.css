@@ -1,0 +1,73 @@
+.wrapper {
+  height: 100svh;
+  display: grid;
+  @media (min-width: 576px) {
+    grid-template-columns: minmax(150px, 250px) minmax(400px, 1fr);
+  }
+}
+
+.aside {
+  padding: var(--space-2);
+  border-right: 1px solid var(--text);
+  background: var(--background);
+  position: absolute;
+  left: -75svw;
+  height: 100svh;
+  z-index: 200;
+  width: 75svw;
+  transition: transform 0.3s;
+
+  @media (min-width: 576px) {
+    transition: unset;
+    transform: unset !important;
+    position: relative;
+    left: unset;
+    height: unset;
+    width: unset;
+  }
+
+  &.open {
+    transform: translate(75svw);
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav {
+  li {
+    display: flex;
+  }
+  a {
+    all: unset;
+    flex: 1;
+    font-size: var(--font-size-sm);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radii-md);
+    background: color-mix(in srgb, var(--text), transparent 93%);
+    transition: background 0.3s;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      background: color-mix(in srgb, var(--text), transparent 90%);
+    }
+  }
+}
+
+.logoutButton {
+  all: unset;
+  font-size: var(--font-size-sm);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radii-md);
+  background: color-mix(in srgb, var(--text), transparent 85%);
+  transition: background 0.3s;
+  text-align: center;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background: color-mix(in srgb, var(--text), transparent 80%);
+  }
+}
