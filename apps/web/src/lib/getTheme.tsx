@@ -41,5 +41,6 @@ function code() {
 }
 
 export default function ThemeScript() {
+  // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
   return <script dangerouslySetInnerHTML={{ __html: `(${code})();` }} />;
 }

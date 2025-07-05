@@ -125,7 +125,7 @@
     --radii-2xl: 100%;
 
     /* semantic tokens */
-    --background: var(--colors-gray-10);
+    --background: var(--colors-gray-11);
     --text: var(--colors-gray-blue-1);
     --link-hover: var(--colors-gray-blue-2);
   }
