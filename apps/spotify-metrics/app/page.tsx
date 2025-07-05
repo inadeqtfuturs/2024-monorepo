@@ -8,9 +8,9 @@ import { accessTokenKey, refreshTokenKey } from '@/lib/constants';
 async function Page() {
   const appCookies = await cookies();
   const accessToken = appCookies.get(accessTokenKey);
-  const refreshToken = appCookies.get(refreshTokenKey);
+  // const refreshToken = appCookies.get(refreshTokenKey);
   return (
-    <DashboardProvider cookies={{ accessToken, refreshToken }}>
+    <DashboardProvider cookies={{ accessToken }}>
       <DashboardLayout />
     </DashboardProvider>
   );
