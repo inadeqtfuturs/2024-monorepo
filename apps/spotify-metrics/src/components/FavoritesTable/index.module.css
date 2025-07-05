@@ -20,7 +20,7 @@
 .toggleAsideButton {
   visibility: visible !important;
   @media (min-width: 576px) {
-    visibility: none !important;
+    visibility: hidden !important;
   }
 }
 
@@ -34,6 +34,25 @@
   border-radius: var(--space-2);
   background: var(--background);
   padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.loadDataButton {
+  all: unset;
+  background: var(--colors-teal-10);
+  padding: var(--space-2);
+  text-align: center;
+  border-radius: 6px;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background: color-mix(in srgb, var(--colors-teal-10), var(--background) 25%);
+  }
 }
 
 .content {

@@ -228,16 +228,34 @@ function Pagination({ table }: { table: Table<Track> }) {
   );
 }
 
-function Loading() {
+function Loading({ loadingState }) {
   return (
     <div className={styles.loadingWrapper}>
       <h1>loading</h1>
+      <small>just a sec</small>
+      {loadingState && <small>loaded {loadingState} tracks</small>}
+    </div>
+  );
+}
+
+function LoadTracksModal({ fetchFavorites }) {
+  return (
+    <div className={styles.loadingWrapper}>
+      <p>no local data. pull spotify data from spotify</p>
+      <button
+        type='button'
+        className={styles.loadDataButton}
+        onClick={async () => await fetchFavorites()}
+      >
+        load data
+      </button>
     </div>
   );
 }
 
 function FavoritesTable({ asideState }) {
-  const { loading, tracks, fetchFavorites } = useContext(DashboardContext);
+  const { loading, loadingState, tracks, fetchFavorites } =
+    useContext(DashboardContext);
   const [globalFilter, setGlobalFilter] = useState<string>();
   const [columnVisibility, setColumnVisibility] = useState({});
   const [pagination, setPagination] = useState<PaginationState>({
@@ -273,8 +291,11 @@ function FavoritesTable({ asideState }) {
 
   return (
     <div className={styles.favoritesWrapper} suppressHydrationWarning>
-      {loading && <Loading />}
+      {loading && <Loading loadingState={loadingState} />}
       <Header asideState={asideState} />
+      {!loading && !tracks?.length && (
+        <LoadTracksModal fetchFavorites={fetchFavorites} />
+      )}
       {tracks.length >= 1 && (
         <div className={classname([styles.content, loading && styles.loading])}>
           <Toolbar table={table} fetchFavorites={fetchFavorites} />

@@ -15,11 +15,10 @@
   height: 100svh;
   z-index: 200;
   width: 75svw;
-  transition: transform 0.3s;
+  transition: left 0.3s;
 
   @media (min-width: 576px) {
     transition: unset;
-    transform: unset !important;
     position: relative;
     left: unset;
     height: unset;
@@ -27,7 +26,7 @@
   }
 
   &.open {
-    transform: translate(75svw);
+    left: 0;
   }
 
   display: flex;

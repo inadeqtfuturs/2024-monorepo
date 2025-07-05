@@ -72,7 +72,7 @@ function Generative() {
           theme === 'dark' ? 'rgba(255, 255, 255, 0.01)' : 'rgba(0,0,0,0.05)';
         context.fill();
 
-        baseSketch.forEach((slice) => {
+        for (const slice of baseSketch) {
           context.save();
           context.beginPath();
           context.translate(slice.x, slice.y);
@@ -84,7 +84,7 @@ function Generative() {
           context.globalAlpha = slice.alpha;
           context.stroke();
           context.restore();
-        });
+        }
       };
     };
   }, [theme, baseSketch]);

@@ -23,6 +23,7 @@ export type Track = {
 export const DashboardContext = createContext<{
   loading: boolean;
   fetchFavorites: () => Promise<void>;
+  loadingState?: string;
   tracks: Track[];
 }>({
   loading: false,
@@ -90,12 +91,14 @@ const getTransaction = ({
 
 type InitialValue = {
   loading: boolean;
+  loadingState?: string;
   db: IDBDatabase | undefined;
   data: [];
 };
 
 const initialValue: InitialValue = {
-  loading: false,
+  loading: true,
+  loadingState: undefined,
   db: undefined,
   data: [],
 };
@@ -109,6 +112,10 @@ function msToTime(ms: number) {
 const [reducer, _context] = createContextReducer(
   {
     SET_LOADING: (state, { loading }) => ({ ...state, loading }),
+    SET_LOADING_STATE: (state, { loadingState }) => ({
+      ...state,
+      loadingState,
+    }),
     SET_DB: (state, { db }) => ({ ...state, db }),
     SET_DATA: (state, { data }) => ({ ...state, data, loading: false }),
   },
@@ -164,6 +171,11 @@ function DashboardProvider({
 
     if (resp.ok) {
       const json = await resp.json();
+      const currentState = `${json.offset + json.limit} / ${json.total}`;
+      dispatch({
+        type: 'SET_LOADING_STATE',
+        payload: { loadingState: currentState },
+      });
       for (const item of json.items) {
         const data = {
           added: new Date(item.added_at),
@@ -188,6 +200,10 @@ function DashboardProvider({
     }
 
     const data = await getAllData({ db: state.db as IDBDatabase });
+    dispatch({
+      type: 'SET_LOADING_STATE',
+      payload: { loadingState: undefined },
+    });
     dispatch({ type: 'SET_DATA', payload: { data } });
   };
 
@@ -197,6 +213,7 @@ function DashboardProvider({
         fetchFavorites,
         loading: state.loading,
         tracks: state.data,
+        loadingState: state.loadingState,
       }}
     >
       {children}

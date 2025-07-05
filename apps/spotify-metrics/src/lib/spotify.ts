@@ -55,16 +55,16 @@ export const getAndSetAccessToken = async ({ code }: { code: string }) => {
     expires_in: string;
   };
 
-  const { access_token, refresh_token, expires_in } = response;
+  const { access_token, refresh_token, expires_in: _expires_in } = response;
 
   const cookieStore = await cookies();
   cookieStore.set(accessTokenKey, access_token, {
     httpOnly: true,
-    domain: '127.0.0.1',
+    domain: process.env.URI,
   });
   cookieStore.set(refreshTokenKey, refresh_token, {
     httpOnly: true,
-    domain: '127.0.0.1',
+    domain: process.env.URI,
   });
 
   redirect('/');

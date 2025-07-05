@@ -10,7 +10,7 @@ type ButtonProps = PropsWithChildren & {
   className?: string;
 };
 
-function Button({ children, className, onClick = () => { } }: ButtonProps) {
+function Button({ children, className, onClick = () => {} }: ButtonProps) {
   return (
     <button
       type='button'

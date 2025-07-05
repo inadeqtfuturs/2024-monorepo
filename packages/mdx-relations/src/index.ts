@@ -54,6 +54,7 @@ function createUtils<
   ): InferMetadataTypes<F, M> => {
     return Object.entries(metadataGenerators).reduce(
       (acc, [key, generator]) => {
+        // biome-ignore lint/suspicious: actual any
         (acc as any)[key] = generator(page);
         return acc;
       },

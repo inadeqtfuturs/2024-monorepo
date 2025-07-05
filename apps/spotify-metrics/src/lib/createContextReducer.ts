@@ -1,5 +1,6 @@
 import type { ActionDispatch } from 'react';
 
+// biome-ignore lint/suspicious/noExplicitAny: actually any
 type NullIdentity<T> = T extends null ? any : T;
 
 type Compose<S, P> = P extends object
@@ -10,14 +11,16 @@ type Compose<S, P> = P extends object
           : S[T] extends object
             ? Partial<S[T]>
             : S[T] extends null
-              ? any
+              ? // biome-ignore lint/suspicious/noExplicitAny: actually any
+                any
               : S[T]
         : NullIdentity<P[T]>;
     }
   : NullIdentity<P>;
 
 export type Action<S, H, T = keyof H> = T extends keyof H
-  ? H[T] extends (...args: any) => any
+  ? // biome-ignore lint/suspicious/noExplicitAny: actually any
+    H[T] extends (...args: any) => any
     ? Parameters<H[T]> extends [S, infer X]
       ? X extends object
         ? { type: T; payload: Compose<S, X> }
