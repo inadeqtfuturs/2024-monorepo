@@ -1,0 +1,27 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    name: test ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use node 22
+        uses: actions/setup-node@v1
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: install
+        run: npm install
+      - name: lint
+        run: npm run lint
+      - name: test
+        run: npm run test
