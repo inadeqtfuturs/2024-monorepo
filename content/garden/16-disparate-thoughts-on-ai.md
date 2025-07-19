@@ -29,7 +29,7 @@ some disparate thoughts on ai in no particular order and subject to perpetual re
 - do our everyday, banal activities benefit significantly enough from ai to justify its cost?
     - what does this question enumerate or force us to enumerate in our attempt to answer?
 
-[^1]: see, for example, [kyle chayka's article from the new yorker](https://www.new yorker.com/culture/infinite-scroll/how-to-opt-out-of-ai-online), or various writing on our inability to avoid ai and/or companies shoehorning ai into any and all products
+[^1]: see, for example, [kyle chayka's article from the new yorker](https://www.newyorker.com/culture/infinite-scroll/how-to-opt-out-of-ai-online), or various writing on our inability to avoid ai and/or companies shoehorning ai into any and all products
 [^2]: 'refinement' is not implies a movement towards a specific goal, so that's probably not quite the right word here. instead, i'm trying to describe a meandering around in service of a particular end
 [^3]: i make this claim or suggestion from the vantage that neoliberalism utilizes dehumanization as a primary engine
 [^4]: following haraway, 'we have never been human'
