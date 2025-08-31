@@ -10,7 +10,10 @@ function getAbsolutePath(value: string): unknown {
 }
 
 const config: StorybookConfig = {
-  stories: ['../../../packages/ui/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: [
+    '../../../packages/ui/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../../../packages/poptoast/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+  ],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',

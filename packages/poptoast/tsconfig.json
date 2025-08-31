@@ -1,0 +1,10 @@
+{
+  "extends": "@if/tooling/tsconfig/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "preserve",
+    "moduleResolution": "Bundler"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

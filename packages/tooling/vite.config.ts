@@ -11,6 +11,7 @@ export default defineConfig(() => {
     root,
     projects: [
       path.resolve(__dirname, '../ui/tsconfig.json'),
+      path.resolve(__dirname, '../poptoast/tsconfig.json'),
       path.resolve(__dirname, '../mdx-relations/tsconfig.json'),
       path.resolve(__dirname, '../../apps/web/tsconfig.json'),
     ],
