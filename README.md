@@ -18,5 +18,4 @@ monorepo for site and prototypes
 
 ## todo
 
-- [ ] hygen or similar for scaffolding
-    - use turbo
+- [ ] turbo scaffolding

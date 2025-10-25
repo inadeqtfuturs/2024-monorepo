@@ -13,8 +13,10 @@ some disparate thoughts on ai in no particular order and subject to perpetual re
 - opting out of ai or not using ai[^1] is like trying to opt out of electricity when it was invented. this is not a value judgement but a claim about the state of the world
 - in general, ai only produces [slop](https://en.wikipedia.org/wiki/AI_slop) and will likely continue to produce slop for the foreseeable future
     - defenders of ai (slop) have a vested interest in a future with less ai slop
-- ai, like any technology, improves through iterative processes and refinement[^2], and this (probably necessarily) requires a collective suffering through its current iteration
+    - defenders of ai (slop) have a vested interest in a present fueled by ai slop
+- ~ai, like any technology, improves through iterative processes and refinement[^2], and this (probably necessarily) requires a collective suffering through its current iteration~
     - 'it's bad today, but it'll be so good tomorrow' is the neoliberalism's perpetually deferred promise that promotes contemporary suffering in service of an unevenly distributed dystopian future
+    - the arc of history does not bend towards justice; improvement is no guarantee
 - ai is unlikely to replace any meaningful work, so long as the work is described and understood *as* meaningful
     - this is a massive problem given how much work (and life) has been rendered meaningless[^3]
     - 'useful' is the other word we could use here, especially given how we understand 'use' under capitalism
